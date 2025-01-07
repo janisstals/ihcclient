@@ -2,12 +2,13 @@
 
 A brief guide on installing and configuring the IHCServer.
 
-## Installing the IHCServer
+## Installing the IHCServer on Linux mint xFCE 
+
 
 Clone the IHCServer repo:
 
 ```bash
-mkdir /opt
+sudo mkdir /opt
 cd /opt
 git clone https://github.com/skumlos/ihcserver.git
 ```
