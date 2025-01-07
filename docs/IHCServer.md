@@ -7,22 +7,22 @@ A brief guide on installing and configuring the IHCServer.
 Clone the IHCServer repo:
 
 ```bash
-mkdir /opt
+sudo mkdir /opt
 cd /opt
-git clone https://github.com/skumlos/ihcserver.git
+sudo git clone https://github.com/skumlos/ihcserver.git
 ```
 
 The `utils` subdirectory is a separate repo, you have to clone it as well:
 
 ```bash
 cd ihcserver
-git clone https://github.com/skumlos/utils.git
+sudo git clone https://github.com/skumlos/utils.git
 ```
 
 > [!WARNING]
 > I had to revert a certain commit in the original `utils` repository as it
   seemed to have a negative impact on the performance of the server.
-
+??????? man nesanāca 
 ```bash
 cd utils
 git revert 4275df8ab99ec077d238d7e4ee40f399126483e5
@@ -31,7 +31,7 @@ git revert 4275df8ab99ec077d238d7e4ee40f399126483e5
 > [!NOTE]
 > Make sure you have the `libssl-dev` library installed:
 > ```bash
-> apt-get install libssl-dev
+> sudo apt-get install libssl-dev
 > ```
 
 When you have cloned both repos and optionally reverted the commit I referred
@@ -45,6 +45,7 @@ make
 > [!NOTE]
 > The source is quite old - to compile the code with modern compilers you may
   have to add the following option to `Makefile` and `utils/Makefile`:
+huhhhh???
 > ```
 > CXXFLAGS=-std=c++14
 > ```
