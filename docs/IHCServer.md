@@ -2,22 +2,31 @@
 
 A brief guide on installing and configuring the IHCServer.
 
-## Installing the IHCServer on Linux mint xFCE 
+## Installing the IHCServer on Linux mint xFCE 22
 
+> [!NOTE]
+> Make sure you have the `libssl-dev` library installed:
+> ```bash
+> sudo apt-get install libssl-dev
+> ```
+> Make sure you have the `git` library installed:
+> ```bash
+> sudo apt-get install git
+> ```
 
 Clone the IHCServer repo:
 
 ```bash
-sudo mkdir /opt
+sudo mkdir opt
 cd /opt
-git clone https://github.com/skumlos/ihcserver.git
+sudo git clone https://github.com/skumlos/ihcserver.git
 ```
 
 The `utils` subdirectory is a separate repo, you have to clone it as well:
 
 ```bash
 cd ihcserver
-git clone https://github.com/skumlos/utils.git
+sudo git clone https://github.com/skumlos/utils.git
 ```
 
 > [!WARNING]
@@ -26,29 +35,19 @@ git clone https://github.com/skumlos/utils.git
 
 ```bash
 cd utils
-git revert 4275df8ab99ec077d238d7e4ee40f399126483e5
+sudo git revert 4275df8ab99ec077d238d7e4ee40f399126483e5
 ```
 
-> [!NOTE]
-> Make sure you have the `libssl-dev` library installed:
-> ```bash
-> apt-get install libssl-dev
-> ```
 
 When you have cloned both repos and optionally reverted the commit I referred
-to, proceed to compile the code:
+to, proceed to compile the code, to compile the code with modern compilers you may
+  have to add the following option: CXXFLAGS=-std=c++14
 
 ```bash
 cd /opt/ihcserver
-make
+sudo make CXXFLAGS=-std=c++14
 ```
 
-> [!NOTE]
-> The source is quite old - to compile the code with modern compilers you may
-  have to add the following option to `Makefile` and `utils/Makefile`:
-> ```
-> CXXFLAGS=-std=c++14
-> ```
 
 If the compilation is successful, there should now be the IHCServer
 application `/opt/ihcserver/ihcserver`.
@@ -56,13 +55,17 @@ application `/opt/ihcserver/ihcserver`.
 Start it now:
 
 ```bash
-/opt/ihcserver/ihcserver
+sudo /opt/ihcserver/ihcserver
 ```
 
 If you start it for the first time, it creates a sample configuration file
 `/etc/ihcserver.cfg` and exits.
 
 Configure the following parameters in `/etc/ihcserver.cfg`:
+close with Ctrl+x, Y to save.
+```bash
+sudo nano /etc/ihcserver.cfg
+```
 
 ```output
 "serialDevice" : "/dev/ttyUSB.IHC"
